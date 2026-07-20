@@ -6,7 +6,7 @@ const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Avenori | Produtos digitais com propósito",
+  title: "Avenori Labs | Produtos digitais com propósito",
   description: "Estratégia, design e tecnologia para transformar ideias em produtos digitais que geram resultados reais.",
   other: { "codex-preview": "development" },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
