@@ -60,13 +60,27 @@ const capabilities = [
   ["04", "Evolução", "Medimos, aprendemos e refinamos cada entrega continuamente."],
 ];
 
+const audiences = [
+  ["01", "Uma ideia para validar", "Para quem precisa transformar uma oportunidade em um produto claro, viável e pronto para dar os primeiros passos."],
+  ["02", "Um negócio para digitalizar", "Para empresas que querem substituir processos manuais por experiências digitais mais simples e eficientes."],
+  ["03", "Um produto para evoluir", "Para negócios que já possuem uma solução e precisam melhorar experiência, tecnologia, desempenho ou posicionamento."],
+  ["04", "Uma parceria de longo prazo", "Para quem procura proximidade, visão de negócio e acompanhamento contínuo depois do lançamento."],
+];
+
+const faqItems = [
+  ["01", "Como um projeto começa?", "Começamos com uma conversa de diagnóstico para entender o negócio, o público, o desafio e o resultado esperado."],
+  ["02", "É possível começar com um MVP?", "Sim. Definimos a menor versão capaz de validar a ideia, gerar aprendizado e preparar uma evolução segura."],
+  ["03", "A Avenori acompanha após a entrega?", "Sim. Podemos cuidar de melhorias, manutenção e novas etapas para que o produto continue evoluindo."],
+  ["04", "O código pertence ao cliente?", "Em projetos desenvolvidos para clientes, a propriedade e as condições de entrega são definidas com clareza na proposta."],
+];
+
 export default async function Home() {
   const blogPosts = await getPublishedPosts(3);
   return (
     <main>
       <header className="nav-shell">
         <a className="wordmark" href="#inicio" aria-label="Avenori — início">
-          Avenori Labs<span>.</span>
+          Avenori<span>.</span>
         </a>
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="#empresa">Empresa</a>
@@ -92,7 +106,7 @@ export default async function Home() {
           </p>
           <div className="hero-actions">
             <a className="button-primary" href="#projetos">Conheça nossas soluções <span>↓</span></a>
-            <a className="text-link" href="#empresa">Descubra a Avenori Labs <span>↘</span></a>
+            <a className="text-link" href="#empresa">Descubra a Avenori <span>↘</span></a>
           </div>
         </div>
 
@@ -121,8 +135,9 @@ export default async function Home() {
         <div className="about-layout">
           <h2>Estratégia que orienta.<br /><em>Design que conecta.</em><br />Tecnologia que entrega.</h2>
           <div className="about-copy">
-            <p className="lead">Avenori Labs é um estúdio de produtos digitais criado para transformar boas ideias em negócios relevantes.</p>
-            <p>Trabalhamos de ponta a ponta: entendemos o desafio, desenhamos a experiência, construímos a tecnologia e acompanhamos sua evolução.</p>
+            <p className="lead">A Avenori nasceu para aproximar boas ideias da tecnologia necessária para colocá-las em movimento.</p>
+            <p>Criamos produtos digitais com visão estratégica, cuidado visual e uma base técnica preparada para crescer. Antes de escrever a primeira linha de código, entendemos o negócio, as pessoas e o resultado que queremos construir.</p>
+            <p>Trabalhamos próximos de fundadores, profissionais e empresas — do diagnóstico ao lançamento, com acompanhamento para cada nova etapa.</p>
             <div className="numbers">
               <div><strong>04</strong><span>produtos no portfólio</span></div>
               <div><strong>360°</strong><span>visão do negócio</span></div>
@@ -148,8 +163,24 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="services section" id="para-quem">
+        <div className="section-label"><span>03</span> Para quem construímos</div>
+        <div className="section-heading">
+          <h2>Do primeiro projeto<br />à próxima fase do negócio.</h2>
+          <p>A Avenori entra onde estratégia, design e tecnologia precisam trabalhar juntos para transformar intenção em resultado.</p>
+        </div>
+        <div className="capability-grid">
+          {audiences.map(([number, title, text]) => (
+            <article key={title}>
+              <span>{number}</span><div className="capability-icon">✦</div>
+              <h3>{title}</h3><p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="work section" id="projetos">
-        <div className="section-label"><span>03</span> Produtos e projetos</div>
+        <div className="section-label"><span>04</span> Produtos e projetos</div>
         <div className="section-heading">
           <h2>Ideias que já ganharam<br /><em>forma, função e futuro.</em></h2>
           <p>Produtos próprios e experiências digitais criadas para mercados diferentes, com a mesma obsessão por qualidade.</p>
@@ -178,10 +209,10 @@ export default async function Home() {
       </section>
 
       <section className="home-blog section" id="conteudos">
-        <div className="section-label"><span>04</span> Conteúdo e ideias</div>
+        <div className="section-label"><span>05</span> Conteúdo e ideias</div>
         <div className="section-heading">
           <h2>Tecnologia com contexto.<br /><em>Ideias que movimentam.</em></h2>
-          <p>Uma curadoria Avenori Labs sobre produtos digitais, design, inteligência artificial e negócios.</p>
+          <p>Uma curadoria Avenori sobre produtos digitais, design, inteligência artificial e negócios.</p>
         </div>
         <div className="home-blog-grid">
           {blogPosts.map((post, index) => <a href={`/blog/${post.slug}`} className="home-blog-card" key={post.id}>
@@ -190,6 +221,22 @@ export default async function Home() {
           </a>)}
         </div>
         <a className="blog-all-link" href="/blog">Ver todos os conteúdos <span>↗</span></a>
+      </section>
+
+      <section className="services section" id="duvidas">
+        <div className="section-label"><span>06</span> Perguntas frequentes</div>
+        <div className="section-heading">
+          <h2>Clareza antes<br />de começar.</h2>
+          <p>Algumas respostas para tornar o primeiro passo mais simples, transparente e seguro.</p>
+        </div>
+        <div className="capability-grid">
+          {faqItems.map(([number, title, text]) => (
+            <article key={title}>
+              <span>{number}</span><div className="capability-icon">✦</div>
+              <h3>{title}</h3><p>{text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="manifesto section">
@@ -201,15 +248,15 @@ export default async function Home() {
         <div className="contact-glow" />
         <p className="eyebrow"><span /> O próximo produto pode ser o seu</p>
         <h2>Tem uma ideia?<br /><em>Vamos tirá-la do papel.</em></h2>
-        <p>Conte o que você quer construir. A gente ajuda a encontrar o melhor caminho entre a ideia e um produto digital de verdade.</p>
-        <a className="button-primary large" href="mailto:contato@avenorilabs.com.br">Iniciar uma conversa <span>↗</span></a>
+        <p>Conte o que você quer construir. A primeira conversa serve para entender o momento do negócio, organizar possibilidades e encontrar o melhor caminho entre a ideia e um produto digital de verdade.</p>
+        <a className="button-primary large" href="mailto:contato@avenori.com.br">Iniciar uma conversa <span>↗</span></a>
       </section>
 
       <footer>
-        <a className="wordmark" href="#inicio">Avenori Labs<span>.</span></a>
+        <a className="wordmark" href="#inicio">Avenori<span>.</span></a>
         <p>Produtos digitais com estratégia, design e tecnologia.</p>
         <div><a href="#empresa">Empresa</a><a href="#projetos">Projetos</a><a href="/blog">Blog</a><a href="#contato">Contato</a></div>
-        <small>© 2026 Avenori Labs. Todos os direitos reservados.</small>
+        <small>© 2026 Avenori. Todos os direitos reservados.</small>
       </footer>
     </main>
   );
