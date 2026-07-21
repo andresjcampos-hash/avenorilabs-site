@@ -1,5 +1,24 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { formatDate, getPublishedPosts } from "@/lib/blog";
+
+export const metadata: Metadata = {
+  title: "Avenori Labs — Estúdio de produtos digitais (estratégia, design e tecnologia)",
+  description:
+    "Estúdio brasileiro que une estratégia, design e tecnologia para transformar ideias em produtos digitais que geram resultados reais. MVPs, SaaS, apps e plataformas sob medida.",
+  openGraph: {
+    title: "Avenori Labs — Estúdio de produtos digitais",
+    description:
+      "Estratégia, design e tecnologia para transformar ideias em produtos digitais que geram resultados reais.",
+    url: "https://avenorilabs.vercel.app/",
+    siteName: "Avenori Labs",
+    locale: "pt_BR",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://avenorilabs.vercel.app/",
+  },
+};
 
 const projects = [
   {
@@ -7,7 +26,7 @@ const projects = [
     name: "NutriGuest Web",
     category: "SaaS para nutricionistas",
     description:
-      "Gestão clínica, acompanhamento de pacientes e inteligência para transformar a rotina do consultório.",
+      "Gestão clínica com IA integrada, portal do paciente e planos comerciais ativos de pacientes a prontuário, tudo em uma plataforma em produção.",
     accent: "violet",
     mark: "NG",
     status: "Produto digital",
@@ -19,7 +38,7 @@ const projects = [
     name: "NutriGuest App",
     category: "Experiência mobile",
     description:
-      "A jornada do paciente na palma da mão, conectando plano alimentar, evolução e relacionamento.",
+      "A jornada do paciente na palma da mão plano alimentar, diário, evolução corporal e hidratação em uma experiência que aumenta a adesão ao tratamento.",
     accent: "cyan",
     mark: "N•",
     status: "Aplicativo",
@@ -31,7 +50,7 @@ const projects = [
     name: "Investimentos Imobiliários",
     category: "Plataforma imobiliária",
     description:
-      "Presença digital premium para apresentar oportunidades imobiliárias e captar investidores qualificados.",
+      "Ecossistema de três frentes Hub, MRV e SCP que qualifica o visitante pelo perfil de investimento antes mesmo do primeiro contato.",
     accent: "blue",
     mark: "VI",
     status: "Web experience",
@@ -44,7 +63,7 @@ const projects = [
     name: "Juraxis",
     category: "Legaltech",
     description:
-      "Um sistema jurídico completo para organizar clientes, processos, agenda, finanças e conhecimento.",
+      "Um sistema jurídico completo, com ambiente autenticado por escritório, para organizar clientes, processos, agenda, finanças e conhecimento.",
     accent: "ice",
     mark: "JX",
     status: "Software jurídico",
@@ -74,10 +93,45 @@ const faqItems = [
   ["04", "O código pertence ao cliente?", "Em projetos desenvolvidos para clientes, a propriedade e as condições de entrega são definidas com clareza na proposta."],
 ];
 
+// Dados estruturados (JSON-LD) para o Google entender quem é a Avenori
+// e, potencialmente, exibir o FAQ como rich snippet nos resultados de busca.
+// Isso não renderiza nada visível — só um <script type="application/ld+json">.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Avenori Labs",
+  url: "https://avenorilabs.vercel.app/",
+  description:
+    "Estúdio brasileiro de produtos digitais. Estratégia, design e tecnologia por trás de SaaS, aplicativos, plataformas imobiliárias e sistemas jurídicos em produção.",
+  email: "contato@avenori.com.br",
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map(([, question, answer]) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: answer,
+    },
+  })),
+};
+
 export default async function Home() {
   const blogPosts = await getPublishedPosts(3);
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       <header className="nav-shell">
         <a className="wordmark" href="#inicio" aria-label="Avenori — início">
           Avenori Labs<span>.</span>
@@ -135,12 +189,12 @@ export default async function Home() {
         <div className="about-layout">
           <h2>Estratégia que orienta.<br /><em>Design que conecta.</em><br />Tecnologia que entrega.</h2>
           <div className="about-copy">
-            <p className="lead">A Avenori nasceu para aproximar boas ideias da tecnologia necessária para colocá-las em movimento.</p>
+            <p className="lead">A Avenori nasceu para aproximar boas ideias da tecnologia necessária para colocá-las em e isso já está rodando em produção, com usuários e planos pagos reais.</p>
             <p>Criamos produtos digitais com visão estratégica, cuidado visual e uma base técnica preparada para crescer. Antes de escrever a primeira linha de código, entendemos o negócio, as pessoas e o resultado que queremos construir.</p>
-            <p>Trabalhamos próximos de fundadores, profissionais e empresas — do diagnóstico ao lançamento, com acompanhamento para cada nova etapa.</p>
+            <p>Trabalhamos próximos de fundadores, profissionais e empresas do diagnóstico ao lançamento, com acompanhamento para cada nova etapa. De um SaaS com IA a uma plataforma imobiliária com funil segmentado por perfil de cliente, cada entrega carrega a mesma obsessão por resultado.</p>
             <div className="numbers">
-              <div><strong>04</strong><span>produtos no portfólio</span></div>
-              <div><strong>360°</strong><span>visão do negócio</span></div>
+              <div><strong>04+</strong><span>produtos em produção</span></div>
+              <div><strong>3</strong><span>modelos de negócio atendidos</span></div>
               <div><strong>1</strong><span>parceiro do início ao futuro</span></div>
             </div>
           </div>
@@ -203,7 +257,19 @@ export default async function Home() {
                 </div>
               </>
             );
-            return project.href ? <a className="project-card" href={project.href} target="_blank" rel="noreferrer" key={project.name}>{content}</a> : <article className="project-card" key={project.name}>{content}</article>;
+            return project.href ? (
+              <a
+                className="project-card"
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={project.name}
+              >
+                {content}
+              </a>
+            ) : (
+              <article className="project-card" key={project.name}>{content}</article>
+            );
           })}
         </div>
       </section>
@@ -246,17 +312,17 @@ export default async function Home() {
 
       <section className="contact section" id="contato">
         <div className="contact-glow" />
-        <p className="eyebrow"><span /> O próximo produto pode ser o seu</p>
+        <p className="eyebrow"><span /> O próximo produto pode ser o seu!</p>
         <h2>Tem uma ideia?<br /><em>Vamos tirá-la do papel.</em></h2>
         <p>Conte o que você quer construir. A primeira conversa serve para entender o momento do negócio, organizar possibilidades e encontrar o melhor caminho entre a ideia e um produto digital de verdade.</p>
         <a className="button-primary large" href="mailto:contato@avenori.com.br">Iniciar uma conversa <span>↗</span></a>
       </section>
 
       <footer>
-        <a className="wordmark" href="#inicio">Avenori<span>.</span></a>
+        <a className="wordmark" href="#inicio">Avenori Labs<span>.</span></a>
         <p>Produtos digitais com estratégia, design e tecnologia.</p>
         <div><a href="#empresa">Empresa</a><a href="#projetos">Projetos</a><a href="/blog">Blog</a><a href="#contato">Contato</a></div>
-        <small>© 2026 Avenori. Todos os direitos reservados.</small>
+        <small>© 2026 Avenori Labs. Todos os direitos reservados.</small>
       </footer>
     </main>
   );
