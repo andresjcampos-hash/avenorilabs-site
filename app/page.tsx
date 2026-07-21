@@ -32,6 +32,7 @@ const projects = [
     status: "Produto digital",
     image: "/projects/nutriguest-web.png",
     imageAlt: "Painel profissional do NutriGuest Web",
+    href: "https://nutriguest.com/",
   },
   {
     index: "02",
@@ -69,6 +70,7 @@ const projects = [
     status: "Software jurídico",
     image: "/projects/juraxis.png",
     imageAlt: "Painel de gestão jurídica do Juraxis",
+    href: "https://https://juraxis.vercel.app/",
   },
 ];
 
@@ -104,6 +106,13 @@ const organizationJsonLd = {
   description:
     "Estúdio brasileiro de produtos digitais. Estratégia, design e tecnologia por trás de SaaS, aplicativos, plataformas imobiliárias e sistemas jurídicos em produção.",
   email: "contato@avenori.com.br",
+  telephone: "+55 12 98266-4205",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+55 12 98266-4205",
+    contactType: "customer service",
+    availableLanguage: "Portuguese",
+  },
 };
 
 const faqJsonLd = {
@@ -315,7 +324,15 @@ export default async function Home() {
         <p className="eyebrow"><span /> O próximo produto pode ser o seu!</p>
         <h2>Tem uma ideia?<br /><em>Vamos tirá-la do papel.</em></h2>
         <p>Conte o que você quer construir. A primeira conversa serve para entender o momento do negócio, organizar possibilidades e encontrar o melhor caminho entre a ideia e um produto digital de verdade.</p>
-        <a className="button-primary large" href="mailto:contato@avenori.com.br">Iniciar uma conversa <span>↗</span></a>
+        <a
+          className="button-primary large"
+          href="https://wa.me/5512982664205?text=Ol%C3%A1%2C%20Andr%C3%A9!%20Conheci%20a%20Avenori%20Labs%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Conversar com André pelo WhatsApp"
+        >
+          Falar pelo WhatsApp <span>↗</span>
+        </a>
       </section>
 
       <footer>
