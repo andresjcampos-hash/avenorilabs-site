@@ -2,6 +2,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { formatDate, getPublishedPosts } from "@/lib/blog";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Avenori Labs — Estúdio de produtos digitais (estratégia, design e tecnologia)",
   description:

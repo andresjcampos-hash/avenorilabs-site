@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { formatDate, getPublishedPosts } from "@/lib/blog";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = { title: "Blog de tecnologia | Avenori", description: "Conteúdo sobre tecnologia, inteligência artificial, design e produtos digitais." };
 
 export default async function BlogPage() {
