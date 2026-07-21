@@ -214,7 +214,12 @@ export default async function Home() {
         <div className="section-label"><span>02</span> Como criamos</div>
         <div className="section-heading">
           <h2>Do primeiro insight<br />ao produto em movimento.</h2>
-          <p>Cada etapa existe para reduzir incertezas e aumentar o valor percebido pelo usuário e pelo negócio.</p>
+          <p>
+            Não começamos pela tecnologia. Começamos entendendo o problema, o público e o objetivo do negócio. A partir desse diagnóstico, estratégia, design e desenvolvimento avançam juntos — reduzindo retrabalho e transformando decisões em um produto pronto para evoluir.
+            <span style={{ display: "block", marginTop: "20px", color: "#b7b0ff", fontFamily: "var(--font-mono), monospace", fontSize: "10px", letterSpacing: ".12em", textTransform: "uppercase" }}>
+              Descoberta → Validação → Construção → Evolução contínua
+            </span>
+          </p>
         </div>
         <div className="capability-grid">
           {capabilities.map(([number, title, text]) => (
@@ -230,7 +235,12 @@ export default async function Home() {
         <div className="section-label"><span>03</span> Para quem construímos</div>
         <div className="section-heading">
           <h2>Do primeiro projeto<br />à próxima fase do negócio.</h2>
-          <p>A Avenori entra onde estratégia, design e tecnologia precisam trabalhar juntos para transformar intenção em resultado.</p>
+          <p>
+            A Avenori Labs trabalha com fundadores, profissionais e empresas em diferentes estágios — da validação de uma ideia à evolução de um produto já em operação. Entramos quando é preciso organizar o negócio, transformar processos em experiências digitais ou preparar uma solução para crescer.
+            <span style={{ display: "block", marginTop: "20px", color: "#b7b0ff", fontFamily: "var(--font-mono), monospace", fontSize: "10px", letterSpacing: ".12em", textTransform: "uppercase" }}>
+              Ideia → Estruturação → Produto → Escala
+            </span>
+          </p>
         </div>
         <div className="capability-grid">
           {audiences.map(([number, title, text]) => (
@@ -242,11 +252,16 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="work section" id="projetos">
+      <section className="work section" id="projetos" style={{ paddingBottom: "56px" }}>
         <div className="section-label"><span>04</span> Produtos e projetos</div>
         <div className="section-heading">
           <h2>Ideias que já ganharam<br /><em>forma, função e futuro.</em></h2>
-          <p>Produtos próprios e experiências digitais criadas para mercados diferentes, com a mesma obsessão por qualidade.</p>
+          <p>
+            Nosso portfólio reúne produtos próprios e soluções sob medida que já operam em saúde, mercado imobiliário e gestão jurídica. Cada projeto nasceu de um desafio real e foi construído para combinar clareza, eficiência e capacidade de evolução.
+            <span style={{ display: "block", marginTop: "20px", color: "#b7b0ff", fontFamily: "var(--font-mono), monospace", fontSize: "10px", letterSpacing: ".12em", textTransform: "uppercase" }}>
+              Saúde digital → Mercado imobiliário → Tecnologia jurídica
+            </span>
+          </p>
         </div>
         <div className="project-grid">
           {projects.map((project) => {
@@ -283,11 +298,16 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="home-blog section" id="conteudos">
+      <section className="home-blog section" id="conteudos" style={{ paddingTop: "58px", paddingBottom: "56px" }}>
         <div className="section-label"><span>05</span> Conteúdo e ideias</div>
         <div className="section-heading">
           <h2>Tecnologia com contexto.<br /><em>Ideias que movimentam.</em></h2>
-          <p>Uma curadoria Avenori sobre produtos digitais, design, inteligência artificial e negócios.</p>
+          <p>
+            Mais do que acompanhar tendências, selecionamos conteúdos que ajudam a compreender como tecnologia, design e inteligência artificial estão transformando produtos, operações e decisões de negócio. Uma curadoria prática para quem quer construir com mais clareza.
+            <span style={{ display: "block", marginTop: "20px", color: "#b7b0ff", fontFamily: "var(--font-mono), monospace", fontSize: "10px", letterSpacing: ".12em", textTransform: "uppercase" }}>
+              Produtos digitais → Design → Inteligência artificial → Negócios
+            </span>
+          </p>
         </div>
         <div className="home-blog-grid">
           {blogPosts.map((post, index) => <a href={`/blog/${post.slug}`} className="home-blog-card" key={post.id}>
@@ -298,11 +318,16 @@ export default async function Home() {
         <a className="blog-all-link" href="/blog">Ver todos os conteúdos <span>↗</span></a>
       </section>
 
-      <section className="services section" id="duvidas">
+      <section className="services section" id="duvidas" style={{ paddingTop: "58px" }}>
         <div className="section-label"><span>06</span> Perguntas frequentes</div>
-        <div className="section-heading">
+        <div className="section-heading" style={{ justifyContent: "flex-start" }}>
           <h2>Clareza antes<br />de começar.</h2>
-          <p>Algumas respostas para tornar o primeiro passo mais simples, transparente e seguro.</p>
+          <p>
+            Antes de iniciar um projeto, alinhamos escopo, prioridades, investimento e próximos passos. Reunimos aqui as dúvidas mais comuns para que a decisão seja segura e a parceria comece com expectativas claras.
+            <span style={{ display: "block", marginTop: "20px", color: "#b7b0ff", fontFamily: "var(--font-mono), monospace", fontSize: "10px", letterSpacing: ".12em", textTransform: "uppercase" }}>
+              Escopo → Prazo → Investimento → Evolução
+            </span>
+          </p>
         </div>
         <div className="capability-grid">
           {faqItems.map(([number, title, text]) => (
@@ -335,11 +360,49 @@ export default async function Home() {
         </a>
       </section>
 
-      <footer>
-        <a className="wordmark" href="#inicio">Avenori Labs<span>.</span></a>
-        <p>Produtos digitais com estratégia, design e tecnologia.</p>
-        <div><a href="#empresa">Empresa</a><a href="#projetos">Projetos</a><a href="/blog">Blog</a><a href="#contato">Contato</a></div>
-        <small>© 2026 Avenori Labs. Todos os direitos reservados.</small>
+      <footer className="site-footer">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <a className="wordmark" href="#inicio">Avenori Labs<span>.</span></a>
+            <p>Estratégia, design e tecnologia para transformar ideias em produtos digitais preparados para crescer.</p>
+            <small>Estúdio brasileiro de produtos digitais.</small>
+          </div>
+
+          <nav className="footer-column" aria-label="Navegação do rodapé">
+            <span>Explorar</span>
+            <a href="#empresa">Empresa</a>
+            <a href="#servicos">O que fazemos</a>
+            <a href="#projetos">Projetos</a>
+            <a href="/blog">Blog</a>
+          </nav>
+
+          <div className="footer-column">
+            <span>O que criamos</span>
+            <a href="#servicos">MVPs e validação</a>
+            <a href="#servicos">SaaS e plataformas</a>
+            <a href="#servicos">Aplicativos</a>
+            <a href="#servicos">Evolução de produtos</a>
+          </div>
+
+          <div className="footer-column footer-contact">
+            <span>Vamos conversar</span>
+            <p>Tem uma ideia ou um produto que precisa evoluir?</p>
+            <a
+              className="footer-whatsapp"
+              href="https://wa.me/5512982664205?text=Ol%C3%A1%2C%20Andr%C3%A9!%20Conheci%20a%20Avenori%20Labs%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp <b>↗</b>
+            </a>
+            <small>(12) 98266-4205</small>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <small>© 2026 Avenori Labs. Todos os direitos reservados.</small>
+          <p>São José dos Campos · SP · Brasil</p>
+        </div>
       </footer>
     </main>
   );
