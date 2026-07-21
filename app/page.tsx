@@ -196,9 +196,20 @@ export default async function Home() {
       <section className="about section" id="empresa">
         <div className="section-label"><span>01</span> Quem somos</div>
         <div className="about-layout">
-          <h2>Estratégia que orienta.<br /><em>Design que conecta.</em><br />Tecnologia que entrega.</h2>
+          <div className="about-intro">
+            <h2>Estratégia que orienta.<br /><em>Design que conecta.</em><br />Tecnologia que entrega.</h2>
+            <div className="about-process" aria-label="Da ideia ao produto">
+              <p>Da ideia ao produto</p>
+              <ol>
+                <li><span>01</span><strong>Diagnóstico</strong><small>Entendemos o negócio e o desafio.</small></li>
+                <li><span>02</span><strong>Estratégia</strong><small>Definimos prioridades e o melhor caminho.</small></li>
+                <li><span>03</span><strong>Produto</strong><small>Transformamos decisões em uma solução real.</small></li>
+                <li><span>04</span><strong>Evolução</strong><small>Medimos, aprendemos e seguimos melhorando.</small></li>
+              </ol>
+            </div>
+          </div>
           <div className="about-copy">
-            <p className="lead">A Avenori nasceu para aproximar boas ideias da tecnologia necessária para colocá-las em e isso já está rodando em produção, com usuários e planos pagos reais.</p>
+            <p className="lead">A Avenori nasceu para aproximar boas ideias da tecnologia necessária para colocá-las em produção — e isso já está acontecendo, com usuários e planos pagos reais.</p>
             <p>Criamos produtos digitais com visão estratégica, cuidado visual e uma base técnica preparada para crescer. Antes de escrever a primeira linha de código, entendemos o negócio, as pessoas e o resultado que queremos construir.</p>
             <p>Trabalhamos próximos de fundadores, profissionais e empresas do diagnóstico ao lançamento, com acompanhamento para cada nova etapa. De um SaaS com IA a uma plataforma imobiliária com funil segmentado por perfil de cliente, cada entrega carrega a mesma obsessão por resultado.</p>
             <div className="numbers">
