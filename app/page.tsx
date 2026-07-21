@@ -80,7 +80,7 @@ export default async function Home() {
     <main>
       <header className="nav-shell">
         <a className="wordmark" href="#inicio" aria-label="Avenori — início">
-          Avenori<span>.</span>
+          Avenori Labs<span>.</span>
         </a>
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="#empresa">Empresa</a>
