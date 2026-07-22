@@ -56,13 +56,7 @@ export const seedPosts: BlogPost[] = [
 ];
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-function supabaseHeaders(key: string): Record<string, string> {
-  const headers: Record<string, string> = { apikey: key };
-  if (!key.startsWith("sb_")) headers.Authorization = `Bearer ${key}`;
-  return headers;
-}
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export function slugify(value: string) {
   return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 90);
@@ -71,7 +65,7 @@ export function slugify(value: string) {
 export async function getPublishedPosts(limit = 20): Promise<BlogPost[]> {
   if (!supabaseUrl || !supabaseKey) return seedPosts.slice(0, limit);
   const url = `${supabaseUrl}/rest/v1/blog_posts?published=eq.true&select=*&order=published_at.desc&limit=${limit}`;
-  const response = await fetch(url, { headers: supabaseHeaders(supabaseKey), cache: "no-store" });
+  const response = await fetch(url, { headers: { apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}` }, next: { revalidate: 300 } });
   if (!response.ok) return seedPosts.slice(0, limit);
   const rows = await response.json();
   return rows.map(fromRow);
@@ -81,7 +75,7 @@ export async function getPost(slug: string): Promise<BlogPost | undefined> {
   const fallback = seedPosts.find((post) => post.slug === slug);
   if (!supabaseUrl || !supabaseKey) return fallback;
   const url = `${supabaseUrl}/rest/v1/blog_posts?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=*&limit=1`;
-  const response = await fetch(url, { headers: supabaseHeaders(supabaseKey), cache: "no-store" });
+  const response = await fetch(url, { headers: { apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}` }, next: { revalidate: 300 } });
   if (!response.ok) return fallback;
   const [row] = await response.json();
   return row ? fromRow(row) : fallback;

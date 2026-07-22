@@ -72,7 +72,7 @@ const projects = [
     status: "Software jurídico",
     image: "/projects/juraxis.png",
     imageAlt: "Painel de gestão jurídica do Juraxis",
-    href: "https://https://juraxis.vercel.app/",
+    href: "https://juraxis.vercel.app/",
   },
 ];
 
@@ -144,8 +144,21 @@ export default async function Home() {
       />
 
       <header className="nav-shell">
-        <a className="wordmark" href="#inicio" aria-label="Avenori — início">
-          Avenori Labs<span>.</span>
+        <a
+          className="brand-logo"
+          href="#inicio"
+          aria-label="Avenori Labs — início"
+          style={{ display: "inline-flex", alignItems: "center", gap: "12px" }}
+        >
+          <Image
+            src="/brand/avenori-labs-avatar.png"
+            alt=""
+            width={34}
+            height={34}
+            priority
+            aria-hidden="true"
+          />
+          <span className="wordmark">Avenori Labs<span>.</span></span>
         </a>
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="#empresa">Empresa</a>
@@ -376,7 +389,19 @@ export default async function Home() {
       <footer className="site-footer">
         <div className="footer-top">
           <div className="footer-brand">
-            <a className="wordmark" href="#inicio">Avenori Labs<span>.</span></a>
+            <a
+              className="footer-brand-logo"
+              href="#inicio"
+              aria-label="Avenori Labs — início"
+              style={{ display: "inline-flex", alignItems: "center" }}
+            >
+              <Image
+                src="/brand/avenori-labs-logo-dark.svg"
+                alt="Avenori Labs"
+                width={220}
+                height={58}
+              />
+            </a>
             <p>Estratégia, design e tecnologia para transformar ideias em produtos digitais preparados para crescer.</p>
             <small>Estúdio brasileiro de produtos digitais.</small>
           </div>
